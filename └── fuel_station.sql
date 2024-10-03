@@ -1,0 +1,11 @@
+CREATE DATABASE fuel_station;
+
+USE fuel_station;
+
+CREATE TABLE fuels (
+  id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  fuel_type VARCHAR(50) NOT NULL,
+  fuel_quantity DECIMAL(10, 2) NOT NULL,
+  fuel_price DECIMAL(10, 2) NOT NULL,
+  date_added TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);

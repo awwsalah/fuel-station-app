@@ -24,4 +24,5 @@ $lang_strings = [
     'total' => 'Wadarta Guud',
     'grand_total' => 'Wadarta Guud',
     'home' => 'Homeka',
+    'delete_fuel' => 'Tirtir',
 ];

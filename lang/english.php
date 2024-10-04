@@ -24,4 +24,5 @@ $lang_strings = [
     'total' => 'Total',
     'grand_total' => 'Grand Total',
     'home' => 'Home',
+    'delete_fuel' => 'Delete Fuel',
 ];

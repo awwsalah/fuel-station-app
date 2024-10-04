@@ -84,7 +84,6 @@ if ($lang === 'so') {
                 justify-content: space-around;
                 align-items: center;
                 max-width: 100%;
-                /* Ensure the sidebar takes the full width */
             }
 
             .sidebar a {
@@ -183,7 +182,58 @@ if ($lang === 'so') {
         </div>
     </div>
 
-    <!-- Modals for Edit and Delete would go here (same as before) -->
+    <!-- Edit Modal -->
+    <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editModalLabel"><?php echo $lang_strings['edit_fuel']; ?></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="editFuelForm">
+                        <input type="hidden" id="editFuelId">
+                        <div class="mb-3">
+                            <label for="editFuelType" class="form-label"><?php echo $lang_strings['fuel_type']; ?></label>
+                            <input type="text" class="form-control" id="editFuelType">
+                        </div>
+                        <div class="mb-3">
+                            <label for="editFuelQuantity" class="form-label"><?php echo $lang_strings['quantity']; ?></label>
+                            <input type="text" class="form-control" id="editFuelQuantity">
+                        </div>
+                        <div class="mb-3">
+                            <label for="editFuelPrice" class="form-label"><?php echo $lang_strings['price']; ?> (USD)</label>
+                            <input type="text" class="form-control" id="editFuelPrice">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><?php echo $lang_strings['close']; ?></button>
+                    <button type="button" class="btn btn-primary" onclick="saveFuelEdit()"><?php echo $lang_strings['save_changes']; ?></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Delete Modal -->
+    <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="deleteModalLabel"><?php echo $lang_strings['delete_fuel']; ?></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <?php echo $lang_strings['confirm_delete']; ?>
+                    <input type="hidden" id="deleteFuelId">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><?php echo $lang_strings['close']; ?></button>
+                    <button type="button" class="btn btn-danger" onclick="deleteFuel()"><?php echo $lang_strings['delete']; ?></button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script src="assets/js/bootstrap.bundle.min.js"></script>
 
@@ -198,11 +248,25 @@ if ($lang === 'so') {
             editModal.show();
         }
 
+        // Save the edited fuel (Add server request logic here)
+        function saveFuelEdit() {
+            // Example: Send data to the server via AJAX
+            console.log("Saving edited fuel...");
+            // Add your AJAX request here to send the form data to the server
+        }
+
         // Trigger the Delete Modal and set the ID for deletion
         function confirmDelete(id) {
             document.getElementById('deleteFuelId').value = id;
             var deleteModal = new bootstrap.Modal(document.getElementById('deleteModal'));
             deleteModal.show();
+        }
+
+        // Delete the fuel (Add server request logic here)
+        function deleteFuel() {
+            // Example: Send request to the server to delete the fuel
+            console.log("Deleting fuel...");
+            // Add your AJAX request here to delete the fuel
         }
     </script>
 </body>
